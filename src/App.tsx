@@ -7,6 +7,9 @@ import FreeReport from "./sections/FreeReport";
 import Manifesto from "./sections/Manifesto";
 import Work from "./sections/Work";
 import Services from "./sections/Services";
+import Programme from "./sections/Programme";
+import Pricing from "./sections/Pricing";
+import Proof from "./sections/Proof";
 import Ethos from "./sections/Ethos";
 import Faq from "./sections/Faq";
 import Footer from "./sections/Footer";
@@ -84,6 +87,9 @@ export default function App() {
             <Work />
             <Services />
             <Ethos />
+            <Programme />
+            <Pricing />
+            <Proof />
             <Faq />
           </main>
           <Footer onIntake={goIntake} onLegal={goLegal} />

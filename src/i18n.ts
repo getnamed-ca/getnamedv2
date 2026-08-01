@@ -65,6 +65,26 @@ export interface SiteCopy {
     lede: string;
     items: { n: string; h: string; p: string }[];
   };
+  programme: {
+    label: string;
+    title: string;
+    lede: string;
+    tiers: { n: string; h: string; p: string }[];
+    measure: string;
+  };
+  pricing: {
+    label: string;
+    title: string;
+    rows: { k: string; v: string }[];
+    note: string;
+  };
+  proof: {
+    label: string;
+    title: string;
+    lede: string;
+    stats: { v: string; p: string }[];
+    guarantees: string[];
+  };
   ethos: { label: string; title: string; paras: string[]; stripCaption: string };
   faq: { label: string; title: string; items: { q: string; a: string }[] };
   footer: {
@@ -217,6 +237,43 @@ const en: SiteCopy = {
       { n: "04", h: "GEO / AEO", p: "Getting you named inside AI answers: ChatGPT, Gemini, Perplexity. Structured data, semantic markup, content written to be quoted." },
       { n: "05", h: "Content & copy", p: "French written in Quebec by a native writer, never machine-translated. English that sounds like you on your best day." },
       { n: "06", h: "Measurement", p: "Reports that open with qualified leads and cost per lead. Evidence, not vibes. You own the dashboard, the analytics, all of it." },
+    ],
+  },
+  programme: {
+    label: "The programme",
+    title: "One system, three layers.",
+    lede: "Start with the layer you need. Add the next one when the numbers say so.",
+    tiers: [
+      { n: "01", h: "Foundation", p: "A bilingual, Bill 96-compliant website structured for AEO, live in 10 to 15 business days: built so Google and AI assistants can cite you from day one." },
+      { n: "02", h: "Growth", p: "Bilingual SEO, local search, AEO/GEO, social and content. The layer that compounds month over month." },
+      { n: "03", h: "Performance", p: "Paid media, landing pages, CRM and lead routing, with cost per qualified lead reported every month." },
+    ],
+    measure: "Every engagement is measured on one number: qualified leads delivered per month, and cost per qualified lead.",
+  },
+  pricing: {
+    label: "No mystery",
+    title: "Published pricing. 30 days' notice.",
+    rows: [
+      { k: "AI Visibility Report", v: "Free" },
+      { k: "AI Visibility Audit", v: "$1,500" },
+      { k: "Bill 96 Digital Compliance Audit", v: "$1,500" },
+      { k: "Growth retainer", v: "$1,200 to $4,500 / month" },
+    ],
+    note: "Established Montreal agencies quote $1,500 to $10,000+ per month for SEO alone. We sit deliberately at the accessible end of the boutique range, and we publish it.",
+  },
+  proof: {
+    label: "The stakes",
+    title: "Invisible is expensive.",
+    lede: "getnamed is two operators who have run real businesses. You speak to an owner, never an account manager, and you always know where the money went.",
+    stats: [
+      { v: "$3,000 to $30,000", p: "Bill 96 fine per violation. Every day a non-compliant site stays online counts as a separate violation." },
+      { v: "2 languages", p: "Google and AI assistants answer in both. So should you." },
+      { v: "1 number", p: "Every report opens with qualified leads and cost per lead." },
+    ],
+    guarantees: [
+      "Live dashboard, always on",
+      "30 days' notice, no lock-in",
+      "You own your domain, ad accounts, analytics and content",
     ],
   },
   ethos: {
@@ -492,6 +549,43 @@ const fr: SiteCopy = {
       { n: "06", h: "Mesure", p: "Des rapports qui commencent par les leads qualifiés et le coût par lead. Des preuves, pas des impressions. Le tableau de bord vous appartient." },
     ],
   },
+  programme: {
+    label: "Le programme",
+    title: "Un système, trois couches.",
+    lede: "Commencez par la couche dont vous avez besoin. Ajoutez la suivante quand les chiffres le disent.",
+    tiers: [
+      { n: "01", h: "Fondation", p: "Un site bilingue, conforme à la Loi 96 et structuré pour l'AEO, en ligne en 10 à 15 jours ouvrables : conçu pour que Google et les assistants IA puissent vous citer dès le premier jour." },
+      { n: "02", h: "Croissance", p: "SEO bilingue, référencement local, AEO/GEO, réseaux sociaux et contenu. La couche qui s'accumule mois après mois." },
+      { n: "03", h: "Performance", p: "Médias payants, pages d'atterrissage, CRM et acheminement des leads, avec le coût par lead qualifié rapporté chaque mois." },
+    ],
+    measure: "Chaque mandat est mesuré sur un seul chiffre : les leads qualifiés livrés par mois, et le coût par lead qualifié.",
+  },
+  pricing: {
+    label: "Sans mystère",
+    title: "Prix affichés. Préavis de 30 jours.",
+    rows: [
+      { k: "Rapport de visibilité IA", v: "Gratuit" },
+      { k: "Audit de visibilité IA", v: "1 500 $" },
+      { k: "Audit de conformité numérique (Loi 96)", v: "1 500 $" },
+      { k: "Forfait croissance", v: "1 200 $ à 4 500 $ / mois" },
+    ],
+    note: "Les agences montréalaises établies facturent de 1 500 $ à plus de 10 000 $ par mois pour le SEO seul. On se place délibérément à l'extrémité accessible du segment boutique, et on l'affiche.",
+  },
+  proof: {
+    label: "Ce qui est en jeu",
+    title: "Être invisible coûte cher.",
+    lede: "getnamed, c'est deux opérateurs qui ont dirigé de vraies entreprises. Vous parlez à un propriétaire, jamais à un gestionnaire de compte, et vous savez toujours où va votre argent.",
+    stats: [
+      { v: "3 000 $ à 30 000 $", p: "Amende prévue par la Loi 96 par infraction. Chaque jour où un site non conforme reste en ligne compte comme une infraction distincte." },
+      { v: "2 langues", p: "Google et les assistants IA répondent dans les deux. Vous devriez faire de même." },
+      { v: "1 chiffre", p: "Chaque rapport s'ouvre sur les leads qualifiés et le coût par lead." },
+    ],
+    guarantees: [
+      "Tableau de bord en direct, toujours actif",
+      "Préavis de 30 jours, aucun engagement",
+      "Vous êtes propriétaire de votre domaine, de vos comptes publicitaires, de vos analytiques et de votre contenu",
+    ],
+  },
   ethos: {
     label: "L'éthique",
     title: "Un site web devrait faire plus que représenter votre entreprise. Il devrait la faire croître.",
@@ -763,6 +857,43 @@ const es: SiteCopy = {
       { n: "04", h: "GEO / AEO", p: "Conseguir que te nombren dentro de las respuestas de IA: ChatGPT, Gemini, Perplexity. Datos estructurados, marcado semántico, contenido escrito para ser citado." },
       { n: "05", h: "Contenido y redacción", p: "Francés escrito en Quebec por un redactor nativo, nunca traducido por máquina. Inglés que suena como tú en tu mejor día." },
       { n: "06", h: "Medición", p: "Informes que abren con leads calificados y costo por lead. Evidencia, no corazonadas. El panel de control es tuyo." },
+    ],
+  },
+  programme: {
+    label: "El programa",
+    title: "Un sistema, tres capas.",
+    lede: "Empieza por la capa que necesitas. Agrega la siguiente cuando los números lo digan.",
+    tiers: [
+      { n: "01", h: "Fundación", p: "Un sitio bilingüe, conforme al Proyecto de Ley 96 (la ley de lengua de Quebec) y estructurado para AEO, en línea en 10 a 15 días hábiles: construido para que Google y los asistentes de IA puedan citarte desde el primer día." },
+      { n: "02", h: "Crecimiento", p: "SEO bilingüe, SEO local, AEO/GEO, redes sociales y contenido. La capa que se acumula mes a mes." },
+      { n: "03", h: "Rendimiento", p: "Medios pagados, páginas de destino, CRM y gestión de leads, con el costo por lead calificado reportado cada mes." },
+    ],
+    measure: "Cada proyecto se mide con una sola cifra: leads calificados entregados por mes y costo por lead calificado.",
+  },
+  pricing: {
+    label: "Sin misterios",
+    title: "Precios publicados. 30 días de aviso.",
+    rows: [
+      { k: "Informe de Visibilidad IA", v: "Gratis" },
+      { k: "Auditoría de Visibilidad IA", v: "$1,500" },
+      { k: "Auditoría de Cumplimiento Digital (Proyecto de Ley 96)", v: "$1,500" },
+      { k: "Retainer de crecimiento", v: "$1,200 a $4,500 / mes" },
+    ],
+    note: "Las agencias establecidas de Montreal cotizan entre $1,500 y más de $10,000 al mes solo por SEO. Nos ubicamos deliberadamente en el extremo más accesible del segmento boutique, y lo publicamos.",
+  },
+  proof: {
+    label: "Lo que está en juego",
+    title: "Ser invisible sale caro.",
+    lede: "getnamed son dos operadores que han dirigido negocios reales. Hablas con un dueño, nunca con un ejecutivo de cuenta, y siempre sabes a dónde va tu dinero.",
+    stats: [
+      { v: "$3,000 a $30,000", p: "Multa del Proyecto de Ley 96 por infracción. Cada día que un sitio no conforme permanece en línea cuenta como una infracción aparte." },
+      { v: "2 idiomas", p: "Google y los asistentes de IA responden en ambos. Tú también deberías hacerlo." },
+      { v: "1 cifra", p: "Cada informe abre con leads calificados y costo por lead." },
+    ],
+    guarantees: [
+      "Panel en vivo, siempre activo",
+      "30 días de aviso, sin permanencia",
+      "Tú eres dueño de tu dominio, tus cuentas publicitarias, tus analíticas y tu contenido",
     ],
   },
   ethos: {
