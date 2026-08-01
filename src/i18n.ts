@@ -17,6 +17,12 @@ export interface SiteCopy {
     scroll: string;
     videoNote: string;
   };
+  film: {
+    beats: { sub?: string; text: string }[];
+    chapters: string[];
+    scr: { label: string; q: string; a: string };
+    lock: { tagline: string; cta: string };
+  };
   report: {
     topLeft: string;
     topRight: string;
@@ -146,6 +152,22 @@ const en: SiteCopy = {
     sub: "Brands. Websites. Findability, on Google and inside AI answers, in French and English.",
     scroll: "Scroll",
     videoNote: "Hero motion slot: drop Seedance clip 01 (ink bloom, 1080p, 16:9) into /public/media/hero.mp4",
+  },
+  film: {
+    beats: [
+      { sub: "Montréal, blue hour", text: "Quebec has 228,622 small businesses." },
+      { text: "Most of them are invisible." },
+      { text: "When someone asks Google, or ChatGPT, for what you do," },
+      { text: "an answer gets written. With or without you." },
+      { text: "We make sure the answer is your name." },
+    ],
+    chapters: ["The Main", "The Query", "The Dive", "The Citation", "The Lock"],
+    scr: {
+      label: "AI assistant · live",
+      q: "best HVAC contractor in Montreal?",
+      a: "Top answer: your business, cited first, in English and French.",
+    },
+    lock: { tagline: "Be the answer.", cta: "Get your free AI Visibility Report" },
   },
   report: {
     topLeft: "FREE REPORT WITHIN 48 HRS.",
@@ -457,6 +479,22 @@ const fr: SiteCopy = {
     scroll: "Défiler",
     videoNote: "Emplacement vidéo : déposer le clip Seedance 01 (encre, 1080p, 16:9) dans /public/media/hero.mp4",
   },
+  film: {
+    beats: [
+      { sub: "Montréal, l'heure bleue", text: "Le Québec compte 228 622 petites entreprises." },
+      { text: "La plupart sont invisibles." },
+      { text: "Quand quelqu'un demande à Google, ou à ChatGPT, ce que vous faites," },
+      { text: "une réponse s'écrit. Avec ou sans vous." },
+      { text: "Nous veillons à ce que cette réponse soit votre nom." },
+    ],
+    chapters: ["L'artère", "La requête", "L'immersion", "La citation", "L'ancrage"],
+    scr: {
+      label: "Assistant IA · en direct",
+      q: "meilleur entrepreneur CVC à Montréal ?",
+      a: "Réponse principale : votre entreprise, citée en premier, en français et en anglais.",
+    },
+    lock: { tagline: "Soyez la référence.", cta: "Obtenez votre rapport gratuit" },
+  },
   report: {
     topLeft: "RAPPORT GRATUIT SOUS 48 H.",
     topRight: "01",
@@ -766,6 +804,22 @@ const es: SiteCopy = {
     sub: "Marcas. Sitios web. Visibilidad, en Google y dentro de las respuestas de IA, en francés e inglés.",
     scroll: "Desplázate",
     videoNote: "Espacio de video: coloca el clip Seedance 01 (tinta, 1080p, 16:9) en /public/media/hero.mp4",
+  },
+  film: {
+    beats: [
+      { sub: "Montreal, hora azul", text: "Quebec tiene 228,622 pequeñas empresas." },
+      { text: "La mayoría de ellas es invisible." },
+      { text: "Cuando alguien le pregunta a Google, o a ChatGPT, por lo que usted hace," },
+      { text: "alguien escribe la respuesta. Con usted o sin usted." },
+      { text: "Nosotros nos aseguramos de que esa respuesta lleve su nombre." },
+    ],
+    chapters: ["La avenida", "La consulta", "La inmersión", "La cita", "El cierre"],
+    scr: {
+      label: "Asistente IA · en vivo",
+      q: "¿el mejor contratista de CVC en Montreal?",
+      a: "Respuesta principal: su empresa, citada primero, en inglés y en francés.",
+    },
+    lock: { tagline: "Sea la respuesta.", cta: "Solicite su Informe de Visibilidad IA gratuito" },
   },
   report: {
     topLeft: "INFORME GRATUITO EN 48 HRS.",

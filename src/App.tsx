@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { COPY, LangContext, getInitialLang, type Lang } from "./i18n";
 import Cursor from "./components/Cursor";
 import Header from "./sections/Header";
-import Hero from "./sections/Hero";
+import Film from "./sections/Film";
 import FreeReport from "./sections/FreeReport";
 import Manifesto from "./sections/Manifesto";
 import Work from "./sections/Work";
@@ -81,7 +81,7 @@ export default function App() {
         <>
           <Header onIntake={goIntake} onNav={navTo} />
           <main>
-            <Hero />
+            <Film />
             <FreeReport onLegal={goLegal} />
             <Manifesto />
             <Work />

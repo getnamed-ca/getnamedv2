@@ -1,0 +1,349 @@
+/* ============================================================
+   Film hero - ported from getnamed.ca (scoped: .film-root / #gn-loader)
+   ============================================================ */
+
+@keyframes fm-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes fm-grain-shift {
+  0% { transform: translate(0, 0); }
+  33% { transform: translate(-38px, 22px); }
+  66% { transform: translate(24px, -30px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ---------- loader ---------- */
+#gn-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--deep);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  transition: opacity 0.6s ease;
+}
+#gn-loader.done {
+  opacity: 0;
+  pointer-events: none;
+}
+#gn-loader .fm-mark {
+  width: 64px;
+  height: 64px;
+}
+#gn-loader .fm-loadbar {
+  width: min(320px, 60vw);
+  height: 2px;
+  background: #26272a;
+  overflow: hidden;
+}
+#gn-loader .fm-loadbar i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--acc);
+  transition: width 0.2s ease;
+}
+#gn-loader .fm-pct {
+  font-family: var(--mono, "IBM Plex Mono", monospace);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--steel);
+}
+
+/* ---------- film section ---------- */
+.film-root {
+  height: 850vh;
+  position: relative;
+  background: var(--deep);
+}
+.film-root .fm-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--deep);
+}
+.film-root canvas.fm-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.film-root .fm-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
+}
+.film-root .fm-grain {
+  position: absolute;
+  inset: -100px;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter><rect width="240" height="240" filter="url(%23n)"/></svg>');
+  animation: fm-grain-shift 0.9s steps(3) infinite;
+}
+.film-root .fm-fade-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 38vh;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(to bottom, transparent, #000000 78%);
+}
+
+/* ---------- beats ---------- */
+.film-root .fm-beat {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8vw;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+.film-root .fm-beat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 70% at 50% 50%, rgba(0, 0, 0, 0.42), transparent 72%);
+  pointer-events: none;
+}
+.film-root .fm-beat > * {
+  position: relative;
+}
+.film-root .fm-beat h2 {
+  position: relative;
+  font-family: var(--disp, "Space Grotesk", sans-serif);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  font-size: clamp(34px, 5.6vw, 84px);
+  max-width: 16ch;
+  color: var(--bone);
+  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.55);
+  margin: 0;
+}
+html.lang-fr .film-root .fm-beat h2,
+html[lang="fr-CA"] .film-root .fm-beat h2 {
+  font-size: clamp(29px, 5vw, 74px);
+}
+.film-root .fm-beat .fm-sub {
+  position: relative;
+  font-family: var(--mono, "IBM Plex Mono", monospace);
+  font-size: clamp(12px, 1.1vw, 15px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 22px;
+  font-weight: 600;
+}
+.film-root .fm-beat.fm-center {
+  align-items: center;
+  text-align: center;
+}
+.film-root .fm-beat.fm-center h2 {
+  max-width: 22ch;
+}
+
+/* ---------- lock / finale ---------- */
+.film-root .fm-lock {
+  align-items: center;
+  text-align: center;
+}
+.film-root .fm-lock .fm-mark {
+  width: clamp(84px, 10vw, 150px);
+  height: auto;
+  margin-bottom: 34px;
+}
+.film-root .fm-lock .fm-wordmark {
+  font-family: var(--disp, "Space Grotesk", sans-serif);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  white-space: nowrap;
+  font-size: clamp(40px, 7vw, 104px);
+  color: var(--bone);
+  margin: 0;
+}
+.film-root .fm-lock .fm-wordmark em {
+  font-style: normal;
+  color: var(--acc);
+}
+.film-root .fm-lock .fm-wordmark .fm-ch {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+.film-root .fm-caret {
+  display: inline-block;
+  background: var(--acc);
+  width: 0.11em;
+  height: 0.58em;
+  margin-left: 0.08em;
+  border-radius: 0.06em;
+  animation: fm-blink 1.06s steps(1) infinite;
+  vertical-align: baseline;
+}
+.film-root .fm-lock .fm-tag {
+  font-family: var(--mono, "IBM Plex Mono", monospace);
+  font-size: clamp(13px, 1.3vw, 17px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-top: 26px;
+  font-weight: 600;
+}
+.film-root .fm-btn {
+  display: inline-block;
+  font-family: var(--mono, "IBM Plex Mono", monospace);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: var(--acc);
+  color: var(--bone);
+  padding: 16px 30px;
+  border-radius: 99px;
+  text-decoration: none;
+  margin-top: 40px;
+  transition: transform 0.25s ease, background 0.25s ease;
+  pointer-events: auto;
+}
+.film-root .fm-btn:hover {
+  transform: translateY(-2px);
+  background: var(--acc-bright, #12a176);
+}
+
+/* ---------- screen card ---------- */
+.film-root .fm-screen-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(560px, 84vw);
+  background: rgba(11, 12, 14, 0.86);
+  border: 1px solid rgba(244, 244, 242, 0.14);
+  border-radius: 14px;
+  padding: 22px 26px 24px;
+  font-family: var(--mono, "IBM Plex Mono", monospace);
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+.film-root .fm-sc-label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--steel);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.film-root .fm-sc-label::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--acc);
+  animation: fm-blink 1.06s steps(1) infinite;
+}
+.film-root .fm-sc-q {
+  font-size: clamp(13px, 1.25vw, 16px);
+  color: var(--bone);
+  line-height: 1.5;
+  min-height: 1.5em;
+}
+.film-root .fm-sc-a {
+  font-size: clamp(13px, 1.25vw, 16px);
+  color: #9a9aa0;
+  line-height: 1.5;
+  margin-top: 12px;
+  min-height: 1.5em;
+}
+.film-root .fm-sc-a em {
+  font-style: normal;
+  color: var(--acc);
+  font-weight: 600;
+}
+.film-root .fm-sc-q .fm-caret,
+.film-root .fm-sc-a .fm-caret {
+  width: 0.5em;
+  height: 1em;
+  margin-left: 2px;
+  border-radius: 2px;
+}
+
+/* ---------- chapter readout + scroll hint ---------- */
+.film-root .fm-readout {
+  position: absolute;
+  left: 28px;
+  bottom: 26px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--bone);
+  pointer-events: none;
+}
+.film-root .fm-readout .fm-ch-label {
+  font-family: var(--mono, "IBM Plex Mono", monospace);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--steel);
+  font-weight: 600;
+}
+.film-root .fm-readout .fm-bar {
+  width: 130px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.16);
+}
+.film-root .fm-readout .fm-bar i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--bone);
+}
+.film-root .fm-scrollhint {
+  position: absolute;
+  right: 28px;
+  bottom: 26px;
+  z-index: 5;
+  font-family: var(--mono, "IBM Plex Mono", monospace);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--steel);
+  pointer-events: none;
+}
+
+/* loader mark caret blink */
+#gn-loader .fm-mark rect.fm-blink-rect,
+.film-root .fm-lock .fm-mark rect.fm-blink-rect {
+  animation: fm-blink 1.06s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-root .fm-caret,
+  .film-root .fm-grain,
+  #gn-loader .fm-mark rect.fm-blink-rect,
+  .film-root .fm-lock .fm-mark rect.fm-blink-rect {
+    animation: none;
+  }
+}
