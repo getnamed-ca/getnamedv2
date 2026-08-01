@@ -71,8 +71,8 @@ export default function Footer({ onIntake, onLegal }: { onIntake: () => void; on
 
         <div className="mt-16 flex flex-wrap items-center justify-between gap-6 border-t pt-8" style={{ borderColor: "var(--rule-dark)" }}>
           <div className="flex items-center gap-3">
-            <Mark size={22} tone="bone" />
-            <Wordmark tone="bone" style={{ fontSize: 15 }} />
+            <Mark size={30} tone="bone" />
+            <Wordmark tone="bone" style={{ fontSize: 21 }} />
           </div>
           <div className="flex flex-wrap items-center gap-6">
             <CharLink
@@ -89,6 +89,23 @@ export default function Footer({ onIntake, onLegal }: { onIntake: () => void; on
               {t.footer.rights}
             </p>
           </div>
+        </div>
+
+        {/* Oversized brand lockup - mark, giant wordmark, tagline */}
+        <div className="mt-16 md:mt-24 flex flex-col items-center text-center select-none" aria-hidden="false">
+          <Mark size={72} tone="bone" />
+          <div
+            className="mt-6 font-display font-bold text-[var(--bone)] leading-[0.88] whitespace-nowrap"
+            style={{ fontSize: "clamp(52px, 12.5vw, 200px)", letterSpacing: "-0.04em" }}
+          >
+            get<span style={{ color: "var(--acc)" }}>[named]</span>
+          </div>
+          <p
+            className="mt-6 font-mono-brand uppercase font-semibold"
+            style={{ fontSize: "clamp(12px, 1.3vw, 17px)", letterSpacing: "0.22em", color: "var(--steel)" }}
+          >
+            {t.footer.tagline}
+          </p>
         </div>
       </div>
     </footer>

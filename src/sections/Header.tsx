@@ -6,12 +6,25 @@ import CharLink from "../components/CharLink";
 export default function Header({ onIntake, onNav }: { onIntake: () => void; onNav: (id: string) => void }) {
   const { lang, setLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    let lastY = window.scrollY;
+    let ticking = false;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 40);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setHidden(y > lastY && y > 120);
+        lastY = y;
+        ticking = false;
+      });
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     const onClick = (e: MouseEvent) => {
       if (!langRef.current?.contains(e.target as Node)) setLangOpen(false);
@@ -43,6 +56,8 @@ export default function Header({ onIntake, onNav }: { onIntake: () => void; onNa
           background: scrolled ? "rgba(11,12,14,0.82)" : "transparent",
           backdropFilter: scrolled ? "blur(12px)" : "none",
           borderBottom: scrolled ? "1px solid var(--rule-dark)" : "1px solid transparent",
+          transform: hidden ? "translateY(-100%)" : "translateY(0)",
+          transition: "transform 0.4s cubic-bezier(0.65,0,0.35,1), background 0.3s ease, border-color 0.3s ease",
         }}
       >
         <div className="max-w-[1600px] mx-auto flex items-center justify-between px-5 md:px-10 py-4">
