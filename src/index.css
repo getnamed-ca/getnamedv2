@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   getnamed - brand tokens (Brand Guidelines v1.2)
+   Ink #101114 · Deep #0B0C0E · Paper #F7F6F3 · Bone #F4F4F2
+   Named Green #0F7A5A · Steel #8B8B93 · Rule #E0DED6
+   ============================================================ */
+
+:root {
+  --ink: #101114;
+  --deep: #0b0c0e;
+  --paper: #f7f6f3;
+  --bone: #f4f4f2;
+  --acc: #0f7a5a;
+  --acc-bright: #12a176;
+  --steel: #8b8b93;
+  --rule: #e0ded6;
+  --rule-dark: #26272a;
+  --gold: #c9a227;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--deep);
+  color: var(--bone);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Section layering - opaque, isolated stacking contexts so no section
+   can ghost over the next on any engine. */
+main > section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Anchor targets clear the fixed header */
+section[id] {
+  scroll-margin-top: 84px;
+}
+
+::selection {
+  background: var(--acc);
+  color: var(--bone);
+}
+
+/* Hide native cursor on precise pointers - replaced by brand cursor */
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor,
+  body.custom-cursor a,
+  body.custom-cursor button,
+  body.custom-cursor [role="button"],
+  body.custom-cursor input,
+  body.custom-cursor textarea,
+  body.custom-cursor select,
+  body.custom-cursor label {
+    cursor: none;
+  }
+}
+
+/* ---------- Typography helpers ---------- */
+.font-display {
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: -0.03em;
+}
+.font-mono-brand {
+  font-family: "IBM Plex Mono", monospace;
+}
+.lbl {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--steel);
+  font-weight: 600;
+}
+.lbl-bracket::before {
+  content: "[\00a0";
+  color: var(--acc);
+}
+.lbl-bracket::after {
+  content: "\00a0]";
+  color: var(--acc);
+}
+
+/* ---------- Brand caret blink (1.06s hard on/off, per guidelines) ---------- */
+.brand-blink {
+  animation: gn-blink 1.06s steps(1) infinite;
+}
+@keyframes gn-blink {
+  0%, 48% { opacity: 1; }
+  52%, 100% { opacity: 0; }
+}
+
+/* ---------- Custom cursor ---------- */
+.gn-cursor-dot,
+.gn-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+.gn-cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--acc-bright);
+}
+.gn-cursor-ring {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(18, 161, 118, 0.65);
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+}
+.gn-cursor-ring.is-active {
+  width: 56px;
+  height: 56px;
+  border-color: rgba(18, 161, 118, 1);
+}
+@media (hover: none), (pointer: coarse) {
+  .gn-cursor-dot, .gn-cursor-ring { display: none; }
+}
+
+/* ---------- Film grain overlay ---------- */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-shift 0.9s steps(4) infinite;
+}
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2%, 1%); }
+  50% { transform: translate(1%, -2%); }
+  75% { transform: translate(-1%, -1%); }
+  100% { transform: translate(2%, 2%); }
+}
+
+/* ---------- Typing caret ---------- */
+.type-caret {
+  display: inline-block;
+  width: 0.5ch;
+  height: 1em;
+  margin-left: 2px;
+  background: var(--acc);
+  vertical-align: -0.12em;
+  animation: gn-blink 1.06s steps(1) infinite;
+}
+
+/* ---------- Showreel strip (placeholder for Seedance clip 2) ---------- */
+@keyframes reel-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.reel-track {
+  animation: reel-slide 18s linear infinite;
+}
+@keyframes bokeh-drift {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(2%, -3%); }
+  66% { transform: translate(-2%, 2%); }
+}
+.bokeh-layer {
+  animation: bokeh-drift 14s ease-in-out infinite;
+}
+
+/* ---------- FAQ accordion ---------- */
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.faq-panel.open {
+  grid-template-rows: 1fr;
+}
+.faq-panel > div {
+  overflow: hidden;
+}
+
+/* ---------- Choice chips (intake) ---------- */
+.chip {
+  border: 1px solid var(--rule);
+  padding: 9px 14px;
+  font-size: 13.5px;
+  cursor: pointer;
+  user-select: none;
+  background: #fff;
+  color: var(--ink);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.chip:hover { border-color: var(--ink); }
+.chip.on {
+  background: var(--ink);
+  color: var(--bone);
+  border-color: var(--ink);
+}
+.chip .tick { display: none; color: var(--acc-bright); }
+.chip.on .tick { display: inline; }
+
+/* ---------- Form fields (intake, paper surface) ---------- */
+.gn-input {
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  padding: 11px 13px;
+  border: 1px solid var(--rule);
+  background: #fff;
+  color: var(--ink);
+}
+.gn-input:focus {
+  outline: none;
+  border-color: var(--ink);
+}
+
+/* ---------- Cookie banner entrance ---------- */
+@keyframes cookie-up {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.cookie-in {
+  animation: cookie-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .brand-blink,
+  .type-caret,
+  .grain::after,
+  .reel-track,
+  .bokeh-layer,
+  .cookie-in {
+    animation: none !important;
+  }
+  html { scroll-behavior: auto; }
+}
