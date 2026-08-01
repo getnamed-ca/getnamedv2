@@ -10,11 +10,16 @@ export default function CharLink({
   className = "",
   onClick,
   href,
+  twinColor = "var(--acc-bright)",
+  bare = false,
 }: {
   text: string;
   className?: string;
   onClick?: (e: React.MouseEvent) => void;
   href?: string;
+  twinColor?: string;
+  /** Render only the rolling text - for use inside an existing button/anchor. */
+  bare?: boolean;
 }) {
   const [hover, setHover] = useState(false);
   const letters = text.split("");
@@ -38,7 +43,7 @@ export default function CharLink({
               <span className="block" style={{ height: "1.25em", lineHeight: "1.25em" }}>
                 {ch === " " ? "\u00A0" : ch}
               </span>
-              <span className="block" style={{ height: "1.25em", lineHeight: "1.25em", color: "var(--acc-bright)" }}>
+              <span className="block" style={{ height: "1.25em", lineHeight: "1.25em", color: twinColor }}>
                 {ch === " " ? "\u00A0" : ch}
               </span>
             </span>
@@ -49,6 +54,7 @@ export default function CharLink({
     </span>
   );
 
+  if (bare) return inner;
   if (href) {
     return (
       <a href={href} onClick={onClick} className="inline-block">

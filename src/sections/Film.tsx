@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useLang, type Lang, type SiteCopy } from "../i18n";
+import CharLink from "../components/CharLink";
 import "../film.css";
 
 /**
@@ -410,7 +411,7 @@ export default function Film() {
                 document.getElementById("report")?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              {t.film.lock.cta}
+              <CharLink text={t.film.lock.cta} bare twinColor="var(--deep)" />
             </a>
           </div>
 

@@ -122,10 +122,8 @@ export default function Header({ onIntake, onNav }: { onIntake: () => void; onNa
               onClick={onIntake}
               className="hidden md:inline-flex items-center gap-2 font-mono-brand text-[12px] tracking-[0.12em] uppercase font-semibold px-4 py-2.5 transition-colors"
               style={{ background: "var(--bone)", color: "var(--ink)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--acc-bright)")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "var(--bone)")}
             >
-              {t.nav.cta}
+              <CharLink text={t.nav.cta} bare />
               <span aria-hidden="true">→</span>
             </button>
 
@@ -172,7 +170,8 @@ export default function Header({ onIntake, onNav }: { onIntake: () => void; onNa
               className="mt-6 inline-flex w-fit items-center gap-3 font-mono-brand text-[13px] tracking-[0.12em] uppercase font-semibold px-6 py-4"
               style={{ background: "var(--acc)", color: "var(--bone)" }}
             >
-              {t.nav.cta} →
+              <CharLink text={t.nav.cta} bare twinColor="var(--deep)" />
+              <span aria-hidden="true">→</span>
             </button>
           </nav>
         </div>

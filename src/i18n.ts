@@ -157,7 +157,7 @@ const en: SiteCopy = {
     beats: [
       { sub: "Montréal, blue hour", text: "Quebec has 228,622 small businesses." },
       { text: "Most of them are invisible." },
-      { text: "When someone asks Google, or ChatGPT, for what you do," },
+      { text: "When someone asks Google, ChatGPT, Perplexity or Claude for what you do," },
       { text: "an answer gets written. With or without you." },
       { text: "We make sure the answer is your name." },
     ],
@@ -483,7 +483,7 @@ const fr: SiteCopy = {
     beats: [
       { sub: "Montréal, l'heure bleue", text: "Le Québec compte 228 622 petites entreprises." },
       { text: "La plupart sont invisibles." },
-      { text: "Quand quelqu'un demande à Google, ou à ChatGPT, ce que vous faites," },
+      { text: "Quand quelqu'un demande à Google, ChatGPT, Perplexity ou Claude ce que vous faites," },
       { text: "une réponse s'écrit. Avec ou sans vous." },
       { text: "Nous veillons à ce que cette réponse soit votre nom." },
     ],
@@ -809,7 +809,7 @@ const es: SiteCopy = {
     beats: [
       { sub: "Montreal, hora azul", text: "Quebec tiene 228,622 pequeñas empresas." },
       { text: "La mayoría de ellas es invisible." },
-      { text: "Cuando alguien le pregunta a Google, o a ChatGPT, por lo que usted hace," },
+      { text: "Cuando alguien le pregunta a Google, ChatGPT, Perplexity o Claude por lo que usted hace," },
       { text: "alguien escribe la respuesta. Con usted o sin usted." },
       { text: "Nosotros nos aseguramos de que esa respuesta lleve su nombre." },
     ],
