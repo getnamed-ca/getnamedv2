@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Lockfile withheld: crashes Vercel's npm install (npm bug "Exit handler
+# never called!"). Dependencies resolve fine from package.json ranges.
+package-lock.json
