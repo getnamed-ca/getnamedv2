@@ -16,7 +16,7 @@ export default function Footer({ onIntake, onLegal }: { onIntake: () => void; on
   ];
 
   return (
-    <footer className="relative grain z-[2]" style={{ background: "var(--deep)", isolation: "isolate" }} aria-label="Footer">
+    <footer className="relative grain z-[2] overflow-hidden" style={{ background: "var(--deep)", isolation: "isolate" }} aria-label="Footer">
       <div className="max-w-[1600px] mx-auto px-5 md:px-10 pt-24 md:pt-36 pb-10">
         <p className="lbl lbl-bracket mb-8">[ getnamed ]</p>
 
