@@ -91,7 +91,7 @@ export default function Footer({ onIntake, onLegal }: { onIntake: () => void; on
           </div>
         </div>
 
-        {/* Oversized brand lockup - mark, giant wordmark, tagline */}
+        {/* Oversized brand lockup - mark, giant wordmark, manifesto */}
         <div className="mt-16 md:mt-24 flex flex-col items-center text-center select-none" aria-hidden="false">
           <Mark size={72} tone="bone" />
           <div
@@ -101,10 +101,17 @@ export default function Footer({ onIntake, onLegal }: { onIntake: () => void; on
             get<span style={{ color: "var(--acc)" }}>[named]</span>
           </div>
           <p
-            className="mt-6 font-mono-brand uppercase font-semibold"
-            style={{ fontSize: "clamp(12px, 1.3vw, 17px)", letterSpacing: "0.22em", color: "var(--steel)" }}
+            className="mt-8 font-display font-bold text-[var(--bone)] max-w-[26ch]"
+            style={{ fontSize: "clamp(24px, 3.4vw, 52px)", lineHeight: 1.1, letterSpacing: "-0.025em" }}
           >
-            {t.footer.tagline}
+            {t.hero.typed}
+            <span className="type-caret" aria-hidden="true" />
+          </p>
+          <p
+            className="mt-5 max-w-[52ch] text-[15px] md:text-[17px] leading-relaxed"
+            style={{ color: "#B9B9C0" }}
+          >
+            {t.hero.sub}
           </p>
         </div>
       </div>
