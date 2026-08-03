@@ -1,10 +1,11 @@
 import { useLang } from "../i18n";
+import CharLink from "../components/CharLink";
 
 /**
  * Services - editorial two-column layout on paper.
  * Sticky label column left; numbered rows with divider rules right.
  */
-export default function Services() {
+export default function Services({ onIntake }: { onIntake: () => void }) {
   const { t } = useLang();
 
   return (
@@ -50,6 +51,26 @@ export default function Services() {
           ))}
           <div className="border-t" style={{ borderColor: "var(--rule)" }} />
         </div>
+      </div>
+
+      <div className="flex justify-center mt-16 md:mt-20">
+        <button
+          type="button"
+          onClick={onIntake}
+          className="inline-flex items-center gap-3 font-mono-brand text-[13px] tracking-[0.14em] uppercase font-semibold px-6 py-4 rounded-full transition-transform"
+          style={{ background: "var(--acc)", color: "var(--bone)" }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "var(--acc-bright)";
+            e.currentTarget.style.transform = "translateY(-2px)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "var(--acc)";
+            e.currentTarget.style.transform = "translateY(0)";
+          }}
+        >
+          <CharLink text={t.nav.cta} bare twinColor="var(--deep)" />
+          <span aria-hidden="true">→</span>
+        </button>
       </div>
     </section>
   );

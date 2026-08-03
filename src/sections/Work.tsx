@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLang } from "../i18n";
+import CharLink from "../components/CharLink";
 
 /**
  * Selected work - 4 showcase case studies in an asymmetric grid.
@@ -43,7 +44,7 @@ function Reel({ word, active }: { word: string; active: boolean }) {
   );
 }
 
-export default function Work() {
+export default function Work({ onIntake }: { onIntake: () => void }) {
   const { t } = useLang();
   const [hovered, setHovered] = useState<number | null>(null);
 
@@ -114,6 +115,26 @@ export default function Work() {
         </div>
 
         <p className="lbl mt-10 normal-case" style={{ textTransform: "none", letterSpacing: "0.04em" }}>{t.work.reel}</p>
+
+        <div className="flex justify-center mt-16 md:mt-20">
+          <button
+            type="button"
+            onClick={onIntake}
+            className="inline-flex items-center gap-3 font-mono-brand text-[13px] tracking-[0.14em] uppercase font-semibold px-6 py-4 rounded-full transition-transform"
+            style={{ background: "var(--acc)", color: "var(--bone)" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "var(--acc-bright)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "var(--acc)";
+              e.currentTarget.style.transform = "translateY(0)";
+            }}
+          >
+            <CharLink text={t.nav.cta} bare twinColor="var(--deep)" />
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
       </div>
     </section>
   );

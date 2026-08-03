@@ -84,15 +84,15 @@ export default function App() {
             <Film />
             <FreeReport onLegal={goLegal} />
             <Manifesto />
-            <Work />
-            <Services />
-            <Ethos />
+            <Work onIntake={goIntake} />
+            <Services onIntake={goIntake} />
+            <Ethos onIntake={goIntake} />
             <Programme />
-            <Pricing />
-            <Proof />
+            <Pricing onIntake={goIntake} />
+            <Proof onIntake={goIntake} />
             <Faq />
           </main>
-          <Footer onIntake={goIntake} onLegal={goLegal} />
+          <Footer onNav={navTo} onLegal={goLegal} />
         </>
       ) : view === "intake" ? (
         <Intake onBack={goHome} />

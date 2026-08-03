@@ -1,4 +1,5 @@
 import { useLang } from "../i18n";
+import CharLink from "../components/CharLink";
 
 /**
  * Ethos - the studio's belief system, editorial two-column.
@@ -7,7 +8,7 @@ import { useLang } from "../i18n";
  */
 const STUDIO_VIDEO = false;
 
-export default function Ethos() {
+export default function Ethos({ onIntake }: { onIntake: () => void }) {
   const { t } = useLang();
 
   return (
@@ -80,6 +81,26 @@ export default function Ethos() {
             <p className="absolute bottom-4 left-5 lbl lbl-bracket z-10">{t.ethos.stripCaption}</p>
           </div>
         </div>
+      </div>
+
+      <div className="flex justify-center mt-16 md:mt-20 px-5 md:px-10">
+        <button
+          type="button"
+          onClick={onIntake}
+          className="inline-flex items-center gap-3 font-mono-brand text-[13px] tracking-[0.14em] uppercase font-semibold px-6 py-4 rounded-full transition-transform"
+          style={{ background: "var(--acc)", color: "var(--bone)" }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "var(--acc-bright)";
+            e.currentTarget.style.transform = "translateY(-2px)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "var(--acc)";
+            e.currentTarget.style.transform = "translateY(0)";
+          }}
+        >
+          <CharLink text={t.nav.cta} bare twinColor="var(--deep)" />
+          <span aria-hidden="true">→</span>
+        </button>
       </div>
     </section>
   );

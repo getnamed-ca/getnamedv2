@@ -1,10 +1,11 @@
 import { useLang } from "../i18n";
+import CharLink from "../components/CharLink";
 
 /**
  * Proof - dark stakes section: owner-to-owner lede, stat cards,
  * and guarantee chips. Ported from the getnamed.ca proof block.
  */
-export default function Proof() {
+export default function Proof({ onIntake }: { onIntake: () => void }) {
   const { t } = useLang();
 
   return (
@@ -49,6 +50,26 @@ export default function Proof() {
               {g}
             </span>
           ))}
+        </div>
+
+        <div className="flex justify-center mt-16 md:mt-20">
+          <button
+            type="button"
+            onClick={onIntake}
+            className="inline-flex items-center gap-3 font-mono-brand text-[13px] tracking-[0.14em] uppercase font-semibold px-6 py-4 rounded-full transition-transform"
+            style={{ background: "var(--acc)", color: "var(--bone)" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "var(--acc-bright)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "var(--acc)";
+              e.currentTarget.style.transform = "translateY(0)";
+            }}
+          >
+            <CharLink text={t.nav.cta} bare twinColor="var(--deep)" />
+            <span aria-hidden="true">→</span>
+          </button>
         </div>
       </div>
     </section>

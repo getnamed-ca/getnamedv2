@@ -6,7 +6,7 @@ import CharLink from "../components/CharLink";
  * Oversized footer CTA - "Got a brand worth fighting for?"
  * Email, socials, intake shortcut, brand line.
  */
-export default function Footer({ onIntake, onLegal }: { onIntake: () => void; onLegal: (d: "terms" | "privacy") => void }) {
+export default function Footer({ onNav, onLegal }: { onNav: (id: string) => void; onLegal: (d: "terms" | "privacy") => void }) {
   const { t } = useLang();
 
   const socials = [
@@ -20,9 +20,9 @@ export default function Footer({ onIntake, onLegal }: { onIntake: () => void; on
       <div className="max-w-[1600px] mx-auto px-5 md:px-10 pt-24 md:pt-36 pb-10">
         <p className="lbl lbl-bracket mb-8">[ getnamed ]</p>
 
-        <button type="button" onClick={onIntake} className="block text-left group w-full">
+        <button type="button" onClick={() => onNav("report")} className="block text-left group w-full">
           <h2
-            className="font-display font-bold text-[var(--bone)] max-w-[14ch] transition-colors duration-300"
+            className="font-display font-bold text-[var(--bone)] max-w-[22ch] transition-colors duration-300"
             style={{ fontSize: "clamp(44px, 8.5vw, 150px)", lineHeight: 0.92, letterSpacing: "-0.04em" }}
           >
             {t.footer.big}
@@ -32,6 +32,20 @@ export default function Footer({ onIntake, onLegal }: { onIntake: () => void; on
               aria-hidden="true"
             >
               →
+            </span>
+            <span
+              className="inline-flex align-middle ml-4 md:ml-6 font-mono-brand text-[13px] tracking-[0.14em] uppercase font-semibold py-4 px-[30px] rounded-full transition-transform"
+              style={{ background: "var(--acc)", color: "var(--bone)", verticalAlign: "middle" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "var(--acc-bright)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "var(--acc)";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+              <CharLink text={t.footer.cta} bare twinColor="var(--deep)" />
             </span>
           </h2>
         </button>

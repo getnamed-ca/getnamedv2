@@ -95,6 +95,7 @@ export interface SiteCopy {
   faq: { label: string; title: string; items: { q: string; a: string }[] };
   footer: {
     big: string;
+    cta: string;
     emailLabel: string;
     socialsLabel: string;
     tagline: string;
@@ -322,6 +323,7 @@ const en: SiteCopy = {
   },
   footer: {
     big: "Got a brand worth fighting for?",
+    cta: "Free Report",
     emailLabel: "Write to us",
     socialsLabel: "Follow",
     tagline: "Be the answer. Soyez la référence.",
@@ -648,6 +650,7 @@ const fr: SiteCopy = {
   },
   footer: {
     big: "Vous avez une marque qui mérite qu'on se batte pour elle?",
+    cta: "Rapport gratuit",
     emailLabel: "Écrivez-nous",
     socialsLabel: "Suivez-nous",
     tagline: "Be the answer. Soyez la référence.",
@@ -974,6 +977,7 @@ const es: SiteCopy = {
   },
   footer: {
     big: "¿Tienes una marca por la que valga la pena luchar?",
+    cta: "Informe gratuito",
     emailLabel: "Escríbenos",
     socialsLabel: "Síguenos",
     tagline: "Be the answer. Soyez la référence.",
